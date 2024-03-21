@@ -2,12 +2,14 @@ package com.example.TaskFlow.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "tarefas")
 @Getter
+@Setter
 public class Tarefas {
 
     @Id

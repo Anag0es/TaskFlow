@@ -1,11 +1,13 @@
 package com.example.TaskFlow.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "tarefas")
+@Getter
 public class Tarefas {
 
     @Id
@@ -21,7 +23,7 @@ public class Tarefas {
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
 
-    private Date dataConclusao;
+    private LocalDate dataConclusao;
 
     @ManyToOne
     private Usuario usuario;

@@ -1,9 +1,13 @@
 package com.example.TaskFlow.service;
 
+import com.example.TaskFlow.dto.UsuarioDTO;
 import com.example.TaskFlow.model.Usuario;
 import com.example.TaskFlow.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuarioService {
@@ -11,24 +15,33 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario createUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    public UsuarioDTO createUsuario(UsuarioDTO usuarioDTO) {
+        Usuario usuario = new Usuario();
+        usuario.setNome(usuarioDTO.getNome());
+        usuario.setEmail(usuarioDTO.getEmail());
+        usuario.setSenha(usuarioDTO.getSenha());
+        usuarioRepository.save(usuario);
+        return UsuarioDTO.toDTO(usuario);
     }
 
-    public Usuario getUsuario() {
-        return usuarioRepository.findAll().get(0);
+    public List<UsuarioDTO> getUsuario( ) {
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        return usuarios.stream().map(UsuarioDTO::toDTO).collect(Collectors.toList());
     }
 
     public Usuario getUsuarioById(Long id) {
         return usuarioRepository.findById(id).orElse(null);
     }
 
-    public Usuario updateUsuario(Usuario usuario) {
-        Usuario existingUsuario = usuarioRepository.findById(usuario.getId()).orElse(null);
-        existingUsuario.setNome(usuario.getNome());
-        existingUsuario.setEmail(usuario.getEmail());
-        existingUsuario.setSenha(usuario.getSenha());
-        return usuarioRepository.save(existingUsuario);
+    public Usuario updateUsuario(Long id, UsuarioDTO usuariodto) {
+        Usuario usuario = usuarioRepository.findById(id).orElse(null);
+        if (usuario != null) {
+            usuario.setNome(usuariodto.getNome());
+            usuario.setEmail(usuariodto.getEmail());
+            usuario.setSenha(usuariodto.getSenha());
+            usuarioRepository.save(usuario);
+        }
+        return usuario;
     }
 
     public void deleteUsuario(Long id) {

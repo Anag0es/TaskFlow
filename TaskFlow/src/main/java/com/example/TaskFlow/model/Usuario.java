@@ -1,13 +1,16 @@
 package com.example.TaskFlow.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name = "usuarios")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Usuario {
 
     @Id
@@ -17,6 +20,5 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
-
 
 }

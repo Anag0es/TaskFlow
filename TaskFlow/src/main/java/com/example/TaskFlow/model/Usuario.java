@@ -1,9 +1,11 @@
 package com.example.TaskFlow.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 @Entity
 @Table(name = "usuarios")
+@Getter
 public class Usuario {
 
     @Id
@@ -13,4 +15,6 @@ public class Usuario {
     private String nome;
     private String email;
     private String senha;
+
+
 }

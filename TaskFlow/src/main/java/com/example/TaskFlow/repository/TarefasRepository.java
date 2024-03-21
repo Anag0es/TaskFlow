@@ -1,0 +1,8 @@
+package com.example.TaskFlow.repository;
+
+import com.example.TaskFlow.model.Tarefas;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TarefasRepository extends JpaRepository<Tarefas, Long>{
+
+}

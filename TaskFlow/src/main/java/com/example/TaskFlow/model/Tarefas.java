@@ -17,8 +17,8 @@ public class Tarefas {
     private Long id;
 
     private String titulo;
-    private String descricao;
 
+    private String descricao;
     @Enumerated(EnumType.STRING)
     private PrioridadeEnum prioridade;
 
@@ -27,6 +27,13 @@ public class Tarefas {
 
     private LocalDate dataConclusao;
 
+    @PrePersist
+    @PreUpdate
+    private void preUpdate() {
+        dataConclusao = LocalDate.now();
+    }
+
     @ManyToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 }

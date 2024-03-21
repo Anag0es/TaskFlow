@@ -33,16 +33,23 @@ public class UsuarioService {
         return usuarioRepository.findById(id).orElse(null);
     }
 
-    public Usuario updateUsuario(Long id, UsuarioDTO usuariodto) {
+    public Usuario updateUsuario(Long id, UsuarioDTO usuarioDTO) {
         Usuario usuario = usuarioRepository.findById(id).orElse(null);
         if (usuario != null) {
-            usuario.setNome(usuariodto.getNome());
-            usuario.setEmail(usuariodto.getEmail());
-            usuario.setSenha(usuariodto.getSenha());
+            if (usuarioDTO.getNome() != null) {
+                usuario.setNome(usuarioDTO.getNome());
+            }
+            if (usuarioDTO.getEmail() != null) {
+                usuario.setEmail(usuarioDTO.getEmail());
+            }
+            if (usuarioDTO.getSenha() != null) {
+                usuario.setSenha(usuarioDTO.getSenha());
+            }
             usuarioRepository.save(usuario);
         }
         return usuario;
     }
+
 
     public void deleteUsuario(Long id) {
         usuarioRepository.deleteById(id);

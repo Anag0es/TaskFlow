@@ -29,8 +29,8 @@ public class UsuarioController {
         return UsuarioDTO.toDTO(usuarioService.getUsuarioById(id));
     }
 
-@PutMapping("/update")
-    public UsuarioDTO updateUsuario(@PathVariable Long id, @RequestBody UsuarioDTO usuarioDTO){
+    @PutMapping("/update/{id}")
+    public UsuarioDTO updateUsuario(@PathVariable Long id, @RequestBody UsuarioDTO usuarioDTO) {
         return UsuarioDTO.toDTO(usuarioService.updateUsuario(id, usuarioDTO));
     }
 

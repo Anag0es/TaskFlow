@@ -27,10 +27,12 @@ public class Tarefas {
 
     private LocalDate dataConclusao;
 
+    private LocalDate dataCriacao;
+
     @PrePersist
     @PreUpdate
     private void preUpdate() {
-        dataConclusao = LocalDate.now();
+        dataCriacao = LocalDate.now();
     }
 
     @ManyToOne

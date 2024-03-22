@@ -16,6 +16,7 @@ public class TarefasDTO {
     private String descricao;
     private String prioridade;
     private String status;
+    private LocalDate dataCriacao;
     private LocalDate dataConclusao;
     private Long usuarioId;
 
@@ -30,6 +31,7 @@ public class TarefasDTO {
                 tarefas.getDescricao(),
                 tarefas.getPrioridade().name(),
                 tarefas.getStatus().name(),
+                tarefas.getDataCriacao(),
                 tarefas.getDataConclusao(),
                 usuarioId
         );

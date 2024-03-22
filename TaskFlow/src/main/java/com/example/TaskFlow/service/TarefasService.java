@@ -32,6 +32,7 @@ public class TarefasService {
         tarefas.setPrioridade(PrioridadeEnum.valueOf(tarefasDTO.getPrioridade()));
         tarefas.setStatus(StatusEnum.valueOf(tarefasDTO.getStatus()));
         tarefas.setDataConclusao(tarefasDTO.getDataConclusao());
+        tarefas.setDataCriacao(LocalDate.now());
 
         if (tarefasDTO.getUsuarioId() != null) {
             Usuario usuario = usuarioRepository.findById(tarefasDTO.getUsuarioId())
@@ -41,6 +42,7 @@ public class TarefasService {
         tarefasRepository.save(tarefas);
         return TarefasDTO.toDTO(tarefas);
     }
+
 
     public List<TarefasDTO> getTarefas() {
         List<Tarefas> tarefas = tarefasRepository.findAll();
@@ -65,14 +67,18 @@ public class TarefasService {
         if (tarefas.getStatus() != null) {
             existingTarefas.setStatus(StatusEnum.valueOf(tarefas.getStatus()));
         }
-        if (tarefas.getDataConclusao() != null) {
-            existingTarefas.setDataConclusao(tarefas.getDataConclusao());
+        if (tarefas.getDataCriacao() != null) {
+            existingTarefas.setDataCriacao(tarefas.getDataCriacao()); // Definindo a nova data de criação
         }
-       if (tarefas.getUsuarioId() != null) {
+        if (tarefas.getDataConclusao() != null) {
+            existingTarefas.setDataConclusao(tarefas.getDataConclusao()); // Definindo a nova data de conclusão
+        }
+        if (tarefas.getUsuarioId() != null) {
             existingTarefas.setUsuario(tarefasRepository.findById(tarefas.getUsuarioId()).orElseThrow(() -> new RuntimeException("Usuário não encontrado!")).getUsuario());
         }
         return tarefasRepository.save(existingTarefas);
     }
+
 
     public void deleteTarefas(Long id) {
         tarefasRepository.deleteById(id);

@@ -2,12 +2,14 @@ package com.example.TaskFlow.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "tarefas")
 @Getter
+@Setter
 public class Tarefas {
 
     @Id
@@ -15,8 +17,8 @@ public class Tarefas {
     private Long id;
 
     private String titulo;
-    private String descricao;
 
+    private String descricao;
     @Enumerated(EnumType.STRING)
     private PrioridadeEnum prioridade;
 
@@ -25,6 +27,15 @@ public class Tarefas {
 
     private LocalDate dataConclusao;
 
+    private LocalDate dataCriacao;
+
+    @PrePersist
+    @PreUpdate
+    private void preUpdate() {
+        dataCriacao = LocalDate.now();
+    }
+
     @ManyToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 }

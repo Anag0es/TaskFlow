@@ -1,39 +1,58 @@
-// LoginForm.js
-
+import styles from './styles.module.css';
 import React, { useState } from 'react';
-import axios from 'axios'; // para fazer solicitações HTTP ao backend
+import axios from 'axios';
 
-function LoginForm() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
+export default function LoginForm(){
+
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [nome, setNome] = useState('');
+  const [erro, setErro] = useState('');
+  const [showError, setShowError] = useState(false);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setErro('');
     try {
-      // Faça uma solicitação HTTP para o backend para autenticar o usuário
-      const response = await axios.post('/api/login', { username, password });
-      // Lidar com a resposta do backend (redirecionar, armazenar token de autenticação, etc.)
+      const { data } = await axios.post('http://localhost:8080/usuario/create',{
+        email,
+        senha,
+        nome
+      });
+      console.log('Usuário criado com sucesso: ' + data.email);
     } catch (error) {
-      setError('Usuário ou senha incorretos. Por favor, tente novamente.');
+      setErro("Erro ao criar usuário. Tente novamente.");
+      setShowError(true);
+      console.log("Erro ao criar usuário: " + error);
     }
-  };
+  }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Username:</label>
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+  return(
+    <div className={styles.container}>
+      <div className={styles.cima}>
+        <h1 className={styles.titulo}>Entre na conta</h1>
       </div>
-      <div>
-        <label>Password:</label>
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+      <div className={styles.div_form}>
+        <form onSubmit={handleSubmit} className={styles.form}>
+        <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} className={styles.input} placeholder="nome"></input>
+          <hr className={styles.linha}></hr>
+          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className={styles.input} placeholder="email"></input>
+          <hr className={styles.linha}></hr>
+          <input type="password" value={senha} onChange={(e) => setSenha(e.target.value)} className={styles.input} placeholder="senha"></input>
+          <hr className={styles.linha}></hr>
+          <button type="submit" className={styles.botao}>Entrar</button>
+          <a href="" className={styles.inscreva}>inscreva-se</a>
+        </form>
+        {showError && (
+        <div className={styles.popup}>
+          <div className={styles.popupContent}>
+            <span className={styles.close} onClick={() => setShowError(false)}>&times;</span>
+            <p>{erro}</p>
+          </div>
+        </div>
+      )}
       </div>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
-      <button type="submit">Login</button>
-    </form>
+    </div>
   );
 }
-
-export default LoginForm;

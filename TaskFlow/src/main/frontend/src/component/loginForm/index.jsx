@@ -6,6 +6,7 @@ export default function LoginForm(){
 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [nome, setNome] = useState('');
   const [erro, setErro] = useState('');
   const [showError, setShowError] = useState(false);
 
@@ -16,7 +17,8 @@ export default function LoginForm(){
     try {
       const { data } = await axios.post('http://localhost:8080/usuario/create',{
         email,
-        senha
+        senha,
+        nome
       });
       console.log('Usuário criado com sucesso: ' + data.email);
     } catch (error) {
@@ -33,6 +35,8 @@ export default function LoginForm(){
       </div>
       <div className={styles.div_form}>
         <form onSubmit={handleSubmit} className={styles.form}>
+        <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} className={styles.input} placeholder="nome"></input>
+          <hr className={styles.linha}></hr>
           <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className={styles.input} placeholder="email"></input>
           <hr className={styles.linha}></hr>
           <input type="password" value={senha} onChange={(e) => setSenha(e.target.value)} className={styles.input} placeholder="senha"></input>

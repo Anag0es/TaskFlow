@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Router} from "react-router-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 import './reset.css';
 import './styles.css';
 
@@ -8,7 +8,7 @@ export default function AppRoutes(){
     return(
         <BrowserRouter>
             <Routes>
-                <Route index element={<Home/>}/>
+                <Route path="/" element={<Home/>}/>
             </Routes>
         </BrowserRouter>
     )

@@ -1,9 +1,26 @@
 .esquerda{
-    background-color: #F3F6FE;
-    width: 70%;
+    background-color: #f9f9f9;
+    width: 100%;
 }
 
 .direita{
-    background-color: #FAD721;
+    background-color: #4146A6;
+    width: 75%;
+}
+
+.direita, .esquerda{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
     width: 40%;
 }

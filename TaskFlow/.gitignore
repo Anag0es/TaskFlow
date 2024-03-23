@@ -6,6 +6,7 @@ target/
 
 
 node_modules/
+!**/src/frontend/package-lock.json
 
 ### STS ###
 .apt_generated

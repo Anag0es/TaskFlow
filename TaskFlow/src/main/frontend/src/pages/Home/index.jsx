@@ -1,6 +1,6 @@
 import styles from './style.module.css';
 import logo from '../../assets/logo.svg';
-import LoginForm from '../../component/loginForm';
+import LoginForm from '../../component/LoginForm';
 
 export default function Home(){
     return (

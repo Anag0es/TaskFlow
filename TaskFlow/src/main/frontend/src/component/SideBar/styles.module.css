@@ -1,0 +1,40 @@
+.sidebar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 8%;
+    background-color: #E7E7E7;
+    color: white;
+    padding-top: 20px;
+    z-index: 100;
+}
+
+.logo{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.imgLogo{
+    width: 50px;
+    height: 50px;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20%;
+}
+
+.iconLink{
+    width: 45px;
+    height: 45px;
+    margin-top: 40px;
+}
+
+.hr {
+    border-left: 3.5px solid #030A8C;
+    height: 75%;
+    position: absolute;
+}

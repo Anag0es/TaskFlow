@@ -1,5 +1,6 @@
 package com.example.TaskFlow.controller;
 
+import com.example.TaskFlow.config.JwtService;
 import com.example.TaskFlow.dto.UsuarioDTO;
 import com.example.TaskFlow.model.Usuario;
 import com.example.TaskFlow.service.UsuarioService;
@@ -48,7 +49,8 @@ public class UsuarioController {
         if (usuario == null || !usuarioService.verificarSenha(usuario, usuarioDTO.getSenha())) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-        return ResponseEntity.ok().build();
+        String token = new JwtService().generateToken(usuario.getId().toString());
+        return ResponseEntity.ok().body(token);
     }
 
 

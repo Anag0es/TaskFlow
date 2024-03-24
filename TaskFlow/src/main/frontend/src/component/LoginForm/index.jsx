@@ -19,10 +19,13 @@ export default function LoginForm(){
                                        headers: {
                                            'Content-Type': 'application/json',
                                        },
+                                       'Authorization': `Bearer ${localStorage.getItem('userToken')}`
       });
-      console.log('Usuário logado com sucesso: ' + response.email);
+      console.log('Usuário logado com sucesso: ' + email);
+      localStorage.setItem('userToken', response.token);
       // Redirecionar para a tela de tarefas após o login bem-sucedido
       navigate("/tarefas");
+      console.log('token: ' + localStorage.getItem('userToken'));
     } catch (error) {
       setErro("Erro ao fazer login. Tente novamente.");
       setShowError(true);

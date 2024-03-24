@@ -50,6 +50,14 @@ public class UsuarioService {
         return usuario;
     }
 
+    public Usuario findByEmail(String email) {
+        return usuarioRepository.findByEmail(email);
+    }
+
+    public boolean verificarSenha(Usuario usuario, String senha) {
+        return usuario.getSenha().equals(senha);
+    }
+
 
     public void deleteUsuario(Long id) {
         usuarioRepository.deleteById(id);

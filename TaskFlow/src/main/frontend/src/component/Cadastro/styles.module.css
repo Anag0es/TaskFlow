@@ -105,7 +105,7 @@
     cursor: pointer;
 }
 
-.popUpSucess{
+.popupSucess{
     position: fixed;
     top: 0;
     left: 0;
@@ -120,7 +120,8 @@
 .popupContentSucess{
     background-color: white;
     width: 30%;
-    height: 30%;
+    height: auto;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -136,6 +137,17 @@
     margin: 1rem;
     font-size: 1.5em;
     cursor: pointer;
+}
+
+.voltarlogin {
+    margin-bottom: 1rem;
+    font-size: 1em;
+    color: #4146A6;
+    text-decoration: none;
+}
+
+.voltarlogin:hover {
+    text-decoration: underline;
 }
 
 .input:focus{

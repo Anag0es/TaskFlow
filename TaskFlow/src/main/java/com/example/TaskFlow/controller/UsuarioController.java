@@ -1,8 +1,11 @@
 package com.example.TaskFlow.controller;
 
 import com.example.TaskFlow.dto.UsuarioDTO;
+import com.example.TaskFlow.model.Usuario;
 import com.example.TaskFlow.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,6 +40,15 @@ public class UsuarioController {
     @DeleteMapping("/delete/{id}")
     public void deleteUsuario(@PathVariable Long id) {
         usuarioService.deleteUsuario(id);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody UsuarioDTO usuarioDTO) {
+        Usuario usuario = usuarioService.findByEmail(usuarioDTO.getEmail());
+        if (usuario == null || !usuarioService.verificarSenha(usuario, usuarioDTO.getSenha())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.ok().build();
     }
 
 

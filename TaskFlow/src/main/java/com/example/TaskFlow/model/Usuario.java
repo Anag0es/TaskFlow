@@ -2,6 +2,7 @@ package com.example.TaskFlow.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ public class Usuario {
     @NotBlank
     private String email;
     @NotBlank
+    @Size(min = 6)
     private String senha;
 
 }

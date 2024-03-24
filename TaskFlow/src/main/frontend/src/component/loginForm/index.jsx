@@ -1,6 +1,7 @@
 import styles from './styles.module.css';
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 export default function LoginForm(){
 
@@ -42,7 +43,7 @@ export default function LoginForm(){
           <input type="password" value={senha} onChange={(e) => setSenha(e.target.value)} className={styles.input} placeholder="senha"></input>
           <hr className={styles.linha}></hr>
           <button type="submit" className={styles.botao}>Entrar</button>
-          <a href="" className={styles.inscreva}>inscreva-se</a>
+          <Link to="/inscricao" className={styles.inscreva}>inscreva-se</Link>
         </form>
         {showError && (
         <div className={styles.popup}>

@@ -1,0 +1,151 @@
+.container{
+    height: 55%;
+    width: 42%;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+}
+
+.cadastro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.setaCadastro, .form{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.cadastro{
+    font-size: 1.3em;
+    font-weight: 400;
+}
+
+.input{
+    width: 30%;
+    height: 7%;
+    margin-top: 2%;
+    border: none;
+    background-color: #f5f5f5;
+}
+
+.linha{
+    display: flex;
+    justify-content: space-between;
+    width: 35%;
+}
+
+.botao{
+    width: 30%;
+    margin-top: 2%;
+    background-color: #4146A6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+}
+
+.setaContainer{
+    display: flex;
+    width: 100%;
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+.seta {
+    color: #4146A6;
+    font-size: 0.8em;
+    align-items: baseline;
+    margin-left: 2%;
+    font-size: 1.4em;
+    text-decoration: none;
+}
+
+.popupErro{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popupContentErro{
+    background-color: white;
+    width: 30%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    position: relative;
+}
+
+.closeErro{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.popUpSucess{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popupContentSucess{
+    background-color: white;
+    width: 30%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    position: relative;
+}
+
+.closeSucess{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.input:focus{
+    outline: none;
+}
+
+.botao:hover{
+    background-color: #2c2f7b;
+}
+
+.seta:hover {
+    text-decoration: underline;
+}

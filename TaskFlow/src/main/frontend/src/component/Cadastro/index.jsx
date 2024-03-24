@@ -23,9 +23,6 @@ export default function LoginForm(){
 
             console.log('Usuário criado com sucesso: ' + response.data.email);
             setShowSuccess(true);
-            setNome("");
-            setEmail("");
-            setSenha("");
         } catch (error) {
             setErro("Erro ao criar usuário. Tente novamente.");
             setShowError(true);

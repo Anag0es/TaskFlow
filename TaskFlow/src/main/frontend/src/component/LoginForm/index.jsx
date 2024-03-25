@@ -19,7 +19,6 @@ export default function LoginForm(){
                                        headers: {
                                            'Content-Type': 'application/json',
                                        },
-                                       'Authorization': `Bearer ${localStorage.getItem('userToken')}`
       });
       console.log('Usuário logado com sucesso: ' + email);
       localStorage.setItem('userToken', response.token);

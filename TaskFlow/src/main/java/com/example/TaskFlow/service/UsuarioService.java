@@ -4,6 +4,7 @@ import com.example.TaskFlow.dto.UsuarioDTO;
 import com.example.TaskFlow.model.Usuario;
 import com.example.TaskFlow.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,11 +16,16 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+
     public UsuarioDTO createUsuario(UsuarioDTO usuarioDTO) {
         Usuario usuario = new Usuario();
         usuario.setNome(usuarioDTO.getNome());
         usuario.setEmail(usuarioDTO.getEmail());
-        usuario.setSenha(usuarioDTO.getSenha());
+        // Aplicar hash na senha antes de salvar
+        String senhaHashed = passwordEncoder.encode(usuarioDTO.getSenha());
+        usuario.setSenha(senhaHashed);
         usuarioRepository.save(usuario);
         return UsuarioDTO.toDTO(usuario);
     }
@@ -55,7 +61,7 @@ public class UsuarioService {
     }
 
     public boolean verificarSenha(Usuario usuario, String senha) {
-        return usuario.getSenha().equals(senha);
+        return passwordEncoder.matches(senha, usuario.getSenha());
     }
 
 

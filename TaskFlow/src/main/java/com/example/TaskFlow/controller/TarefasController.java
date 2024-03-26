@@ -40,4 +40,16 @@ public class TarefasController {
         tarefasService.deleteTarefas(id);
     }
 
+    @GetMapping("/status/{status}")
+    public List<TarefasDTO> getTarefasByStatus(@PathVariable String status) {
+        return tarefasService.getTarefasByStatus(status);
+    }
+
+    @PatchMapping("/updateStatus/{id}")
+    public TarefasDTO updateStatus(@PathVariable Long id, @RequestBody String novoStatus) {
+        return tarefasService.updateStatus(id, novoStatus);
+    }
+
+
+
 }

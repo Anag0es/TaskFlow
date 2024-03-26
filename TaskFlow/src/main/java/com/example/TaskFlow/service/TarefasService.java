@@ -79,6 +79,23 @@ public class TarefasService {
         return tarefasRepository.save(existingTarefas);
     }
 
+    public TarefasDTO updateStatus(Long id, String novoStatus) {
+        Tarefas tarefa = tarefasRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Tarefa não encontrada!"));
+
+        tarefa.setStatus(StatusEnum.valueOf(novoStatus));
+        tarefasRepository.save(tarefa);
+
+        return TarefasDTO.toDTO(tarefa);
+    }
+
+    public List<TarefasDTO> getTarefasByStatus(String status) {
+        List<Tarefas> tarefas = tarefasRepository.findByStatus(StatusEnum.valueOf(status));
+        return tarefas.stream().map(TarefasDTO::toDTO).collect(Collectors.toList());
+    }
+
+
+
 
     public void deleteTarefas(Long id) {
         tarefasRepository.deleteById(id);

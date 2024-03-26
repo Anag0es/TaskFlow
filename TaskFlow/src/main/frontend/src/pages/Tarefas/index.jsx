@@ -8,7 +8,11 @@ export default function Tarefas(){
         <div className={styles.container}>
             <SideBar/>
             <div className={styles.content}>
-                <h1>Tarefas</h1>
+                <div className={styles.tarefas}>
+                   <h1>Tarefas</h1>
+                </div>
+                <div className={styles.pendente}>
+                </div>
             </div>
         </div>
     );

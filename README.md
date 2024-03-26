@@ -21,10 +21,10 @@ O projeto está em desenvolvimento ativo. Novas funcionalidades e melhorias est�
 Contribuições são bem-vindas! Se você encontrar problemas, bugs ou tiver sugestões de melhorias, fique à vontade para abrir issues neste repositório. Se deseja contribuir com código, crie uma solicitação pull, e eu ficarei feliz em analisar.
 
 ## Tecnologias Utilizadas 🛠️
-Java ☕
-Spring Framework 🌸
-PostgreSQL 🎲
-ReactJS🔹
+- Java ☕
+- Spring Framework 🌸
+- PostgreSQL 🎲
+- ReactJS🔹
 
 ## Licença 📄
 Este projeto é licenciado sob a Licença MIT.

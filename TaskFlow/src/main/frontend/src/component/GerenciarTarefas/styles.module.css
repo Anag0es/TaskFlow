@@ -1,0 +1,53 @@
+.container{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 100vh;
+    flex-direction: column;
+    margin-left: 5%;
+    margin-top: 10%;
+}
+
+
+.titulo{
+   font-size: 1.3em;
+}
+
+.boxPendente{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    background-color: #D9D9D9;
+    width: 80vw;
+    height: 30vh;
+    border-radius: 5px;
+}
+
+.boxAndamento{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    background-color: #D9D9D9;
+    width: 80vw;
+    height: 30vh;
+    border-radius: 5px;
+}
+
+.boxConcluida{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    background-color: #D9D9D9;
+    width: 80vw;
+    height: 30vh;
+    border-radius:  5px;
+}

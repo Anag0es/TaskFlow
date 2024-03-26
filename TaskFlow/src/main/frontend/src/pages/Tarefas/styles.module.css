@@ -1,9 +1,16 @@
+/* This should center the title at the top of the page. */
 .tarefas {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    margin-top: 55px;
+    display: block; /* changed from flex to block */
+    text-align: center; /* this centers the h1 element */
+    margin-top: 5%;
     font-size: 2em;
 }
 
+/* These styles can remain the same, they should not affect the position of the title. */
+.tarefasAdmin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}

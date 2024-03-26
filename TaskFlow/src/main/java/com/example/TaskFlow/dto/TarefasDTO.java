@@ -4,12 +4,10 @@ import com.example.TaskFlow.model.Tarefas;
 import com.example.TaskFlow.model.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Getter
-@Setter
 @AllArgsConstructor
 public class TarefasDTO {
 
@@ -38,4 +36,5 @@ public class TarefasDTO {
                 usuarioId
         );
     }
+
 }

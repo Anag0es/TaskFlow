@@ -14,23 +14,25 @@ export default function LoginForm(){
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErro('');
-    try {
-      const response = await axios.post('http://localhost:8080/usuario/login', { email, senha }, {
+try {
+  const response = await axios.post('http://localhost:8080/usuario/login', { email, senha }, {
                                        headers: {
                                            'Content-Type': 'application/json',
                                        },
-      });
-      console.log('Usuário logado com sucesso: ' + email);
-      localStorage.setItem('userToken', response.token);
-      // Redirecionar para a tela de tarefas após o login bem-sucedido
-      navigate("/tarefas");
-      console.log('token: ' + localStorage.getItem('userToken'));
-    } catch (error) {
-      setErro("Erro ao fazer login. Tente novamente.");
-      setShowError(true);
-      console.log("Erro ao criar usuário: " + error);
+  });
+  console.log('Usuário logado com sucesso: ' + email);
+  // Armazenar o token no localStorage, certifique-se de que 'token' é a chave correta na resposta
+  const token = response.data; // Ajuste esta linha conforme a estrutura da sua resposta
+  localStorage.setItem('userToken', token); // Usa 'setItem' para armazenar o token
+  console.log('Token: ' + token); // Confirmação do token
+  // Redirecionar para a tela de tarefas após o login bem-sucedido
+  navigate("/tarefas");
+} catch (error) {
+  setErro("Erro ao fazer login. Tente novamente.");
+  setShowError(true);
+  console.log("Erro ao fazer login: " + error);
     }
-  }
+}
 
   return(
     <div className={styles.container}>

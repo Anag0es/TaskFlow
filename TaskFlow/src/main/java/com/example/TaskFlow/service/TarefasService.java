@@ -25,7 +25,7 @@ public class TarefasService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public TarefasDTO createTarefas(TarefasDTO tarefasDTO) {
+    public TarefasDTO createTarefas(TarefasDTO tarefasDTO, Usuario usuario) {
         Tarefas tarefas = new Tarefas();
         tarefas.setTitulo(tarefasDTO.getTitulo());
         tarefas.setDescricao(tarefasDTO.getDescricao());
@@ -33,12 +33,7 @@ public class TarefasService {
         tarefas.setStatus(StatusEnum.valueOf(tarefasDTO.getStatus()));
         tarefas.setDataConclusao(tarefasDTO.getDataConclusao());
         tarefas.setDataCriacao(LocalDate.now());
-
-        if (tarefasDTO.getUsuarioId() != null) {
-            Usuario usuario = usuarioRepository.findById(tarefasDTO.getUsuarioId())
-                    .orElseThrow(() -> new RuntimeException("Usuário não encontrado!"));
-            tarefas.setUsuario(usuario);
-        }
+        tarefas.setUsuario(usuario);
         tarefasRepository.save(tarefas);
         return TarefasDTO.toDTO(tarefas);
     }
@@ -53,7 +48,7 @@ public class TarefasService {
         return tarefasRepository.findById(id).orElseThrow(() -> new RuntimeException("Tarefa não encontrada!"));
     }
 
-    public Tarefas updateTarefas(Long id, TarefasDTO tarefas){
+    public Tarefas updateTarefas(Long id, TarefasDTO tarefas) {
         Tarefas existingTarefas = tarefasRepository.findById(id).orElseThrow(() -> new RuntimeException("Tarefa não encontrada!"));
         if (tarefas.getTitulo() != null) {
             existingTarefas.setTitulo(tarefas.getTitulo());
@@ -95,12 +90,9 @@ public class TarefasService {
     }
 
 
-
-
     public void deleteTarefas(Long id) {
         tarefasRepository.deleteById(id);
     }
-
 
 
 }

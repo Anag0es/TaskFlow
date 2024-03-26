@@ -22,9 +22,9 @@ export default function LoginForm(){
       });
       console.log('Usuário logado com sucesso: ' + email);
       localStorage.setItem('userToken', response.token);
+      console.log("token: " + response.data);
       // Redirecionar para a tela de tarefas após o login bem-sucedido
       navigate("/tarefas");
-      console.log('token: ' + localStorage.getItem('userToken'));
     } catch (error) {
       setErro("Erro ao fazer login. Tente novamente.");
       setShowError(true);

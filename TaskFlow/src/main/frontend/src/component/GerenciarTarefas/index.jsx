@@ -34,6 +34,11 @@ export default function GerenciarTarefas({ userId }) {
         setMostrarFormulario(null); // Após enviar, esconder o formulário
     };
 
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        return new Date(dateString).toLocaleDateString('pt-BR', options);
+    };
+
     const toggleFormulario = (status) => {
         setMostrarFormulario(mostrarFormulario === status ? null : status); // Alternar a visibilidade do formulário
     };
@@ -71,9 +76,16 @@ const renderFormularioModal = () => (
             </h1>
             <div className={styles.tarefas}>
             <div className={styles.boxPendente}>
-                {tarefas.filter(tarefa => tarefa.status === 'pendente').map((tarefa, index) => (
-                    <div key={index}>{tarefa.titulo}</div>
-                ))}
+              {tarefas.filter(tarefa => tarefa.status === 'pendente').map((tarefa, index) => (
+                <div className={styles.TarefaAtribuida} key={tarefa.id || index}>
+                    <div className={styles.tituloData}>
+                  <h1 className={styles.TarefaTitulo}>{tarefa.titulo}</h1>
+                  <p className={styles.TarefaDataConclusao}>{formatDate(tarefa.dataConclusao)}</p>
+                    </div>
+                  <p className={styles.TarefaDescricao}>{tarefa.descricao}</p>
+                  <p className={styles.TarefaPrioridade}>{tarefa.prioridade}</p>
+                </div>
+              ))}
             </div>
             {mostrarFormulario === 'pendente' && renderFormularioModal()}
 

@@ -11,43 +11,19 @@
    font-size: 1.3em;
 }
 
-.boxPendente{
+.boxPendente, .boxAndamento, .boxConcluida {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start; /* Align items at the start of the container */
     align-items: flex-start;
-    flex-direction: column;
+    flex-direction: row; /* Align items horizontally */
+    overflow-x: auto; /* Allow horizontal scrolling */
     margin-top: 10px;
     margin-bottom: 25px;
     background-color: #D9D9D9;
     width: 80vw;
-    height: 30vh;
+    height: 30vh; /* Consider setting a min-height instead of height */
     border-radius: 5px;
-}
-
-.boxAndamento{
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-top: 10px;
-    margin-bottom: 25px;
-    background-color: #D9D9D9;
-    width: 80vw;
-    height: 30vh;
-    border-radius: 5px;
-}
-
-.boxConcluida{
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-direction: column;
-    margin-top: 10px;
-    margin-bottom: 25px;
-    background-color: #D9D9D9;
-    width: 80vw;
-    height: 30vh;
-    border-radius:  5px;
+    padding: 10px; /* Add some padding inside the boxes */
 }
 
 .botaoMais{
@@ -109,11 +85,11 @@
 }
 
 .modalActive {
-    display: block; /* Vai exibir o modal */
+    display: block;
 }
 
 .modalBackdrop {
-    display: none; /* por padrão, não é exibido */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -121,3 +97,67 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+.tarefas {
+    display: flex;
+    flex-direction: column;
+}
+
+.boxPendente, .boxAndamento, .boxConcluida {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    flex-wrap: nowrap;
+     gap: 10px;
+}
+
+.TarefaAtribuida {
+    flex: 0 0 auto;
+    width: 200px;
+    background-color: #FFFFFF;
+    border: 2px solid #4146A6;
+    border-radius: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+    height: 150px;
+    justify-content: space-around;
+}
+
+.TarefaTitulo {
+    font-size: 1em;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.TarefaDescricao {
+    font-size: 0.8em;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.TarefaDataConclusao {
+    font-size: 0.7em;
+    color: #000;
+    margin-top: 4px;
+}
+
+.TarefaPrioridade {
+    font-size: 0.7em;
+    color: #000;
+    margin-top: 4px;
+    border-top: 1.5px solid #4146A6;
+    padding-top: 4px;
+}
+
+.tituloData{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+

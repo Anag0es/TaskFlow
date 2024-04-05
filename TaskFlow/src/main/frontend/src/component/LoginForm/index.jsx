@@ -7,6 +7,7 @@ export default function LoginForm(){
 
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+    const [id, setId] = useState('');
   const [erro, setErro] = useState('');
   const [showError, setShowError] = useState(false);
   const navigate = useNavigate();
@@ -15,15 +16,24 @@ export default function LoginForm(){
     e.preventDefault();
     setErro('');
     try {
-      const response = await axios.post('http://localhost:8080/usuario/login', { email, senha }, {
+      const response = await axios.post('http://localhost:8080/usuario/login', { email, senha, id }, {
                                        headers: {
                                            'Content-Type': 'application/json',
                                        },
       });
       console.log('Usuário logado com sucesso: ' + email);
-      localStorage.setItem('userToken', response.token);
-      console.log("token: " + response.data);
-      // Redirecionar para a tela de tarefas após o login bem-sucedido
+
+      localStorage.setItem('token', response.data);
+
+      // decodifica o token e pega o userID
+      const token = localStorage.getItem('token');
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const userID = JSON.parse(window.atob(base64)).userId;
+
+      localStorage.setItem('userID', userID);
+
+
       navigate("/tarefas");
     } catch (error) {
       setErro("Erro ao fazer login. Tente novamente.");
